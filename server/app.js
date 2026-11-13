@@ -14,8 +14,15 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-// Inicializa banco de dados
-initDb();
+// Garante que o banco seja inicializado na primeira requisição (crucial no Vercel serverless)
+app.use(async (req, res, next) => {
+  try {
+    await initDb();
+    next();
+  } catch (err) {
+    next(err);
+  }
+});
 
 app.use(cors());
 app.use(express.json({ limit: '15mb' }));
