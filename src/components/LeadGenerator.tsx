@@ -207,7 +207,7 @@ export const LeadGenerator: React.FC<LeadGeneratorProps> = ({ currentUser, onLea
                 <span className="font-extrabold text-sm block">Pequeno Porte</span>
                 <Package className={`w-4 h-4 ${selectedPorte === 'PEQUENO' ? 'text-[#ff7a00]' : 'text-slate-500'}`} />
               </div>
-              <p className="text-xs text-slate-400">100 a 1.000 clientes (redes de bairro e FTTH inicial)</p>
+              <p className="text-xs text-slate-400">A partir de 15 a 1.000 clientes (início de rede, FTTH local)</p>
             </button>
 
             <button

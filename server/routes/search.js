@@ -6,9 +6,9 @@ router.use(authenticateToken);
 
 const PORTE_CONFIGS = {
   PEQUENO: {
-    label: 'Pequeno Porte (100 a 1.000 clientes)',
-    subscribersRange: '100 - 1.000',
-    description: 'Provedores de bairro, atendimento local ou redes de cidades menores',
+    label: 'Pequeno Porte (15 a 1.000 clientes)',
+    subscribersRange: '15 - 1.000',
+    description: 'Provedores a partir de 15 clientes, início de rede, redes de bairro ou FTTH local',
     suggestedMaterials: 'Cabos Drop 1 FO (bobinas 1km), Conectores SC/APC, Caixas CTO 8/16FO e ONUs GPON de entrada'
   },
   MEDIO: {
@@ -153,9 +153,9 @@ router.post('/generate', (req, res) => {
       let asn = 'Não possui (Trânsito IP / PTT)';
 
       if (selectedPorte === 'PEQUENO') {
-        subscribersCount = Math.floor(150 + Math.random() * 800);
+        subscribersCount = Math.floor(15 + Math.random() * 985);
         estimatedSubscribers = `~${subscribersCount} assinantes ativos`;
-        asn = Math.random() > 0.7 ? `AS${260000 + Math.floor(Math.random() * 9000)}` : 'Não possui (Trânsito IP / PTT)';
+        asn = Math.random() > 0.85 ? `AS${260000 + Math.floor(Math.random() * 9000)}` : 'Não possui (Trânsito IP / PTT)';
       } else if (selectedPorte === 'MEDIO') {
         subscribersCount = Math.floor(1200 + Math.random() * 8500);
         estimatedSubscribers = `~${subscribersCount.toLocaleString('pt-BR')} assinantes ativos`;

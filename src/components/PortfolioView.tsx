@@ -282,7 +282,7 @@ export const PortfolioView: React.FC<PortfolioViewProps> = ({
               className="px-3 py-2 rounded-xl border border-[#282832] text-xs font-semibold bg-[#18181f] text-white focus:outline-none focus:border-[#ff7a00]"
             >
               <option value="ALL">Todos os Portes</option>
-              <option value="PEQUENO">📦 Pequeno Porte (100 - 1k)</option>
+              <option value="PEQUENO">📦 Pequeno Porte (15 - 1k)</option>
               <option value="MEDIO">🏢 Médio Porte (1k - 10k)</option>
               <option value="GRANDE">🌐 Grande Porte (+10k)</option>
             </select>
