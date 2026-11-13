@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+:root {
+  --flux-orange: #ff7a00;
+  --flux-orange-hover: #e06b00;
+  --flux-orange-glow: rgba(255, 122, 0, 0.25);
+  --flux-black: #0a0a0c;
+  --flux-dark: #121216;
+  --flux-card: #17171d;
+  --flux-card-hover: #1e1e26;
+  --flux-border: #282832;
+  --flux-border-light: #383846;
+}
+
+body {
+  background-color: var(--flux-black);
+  color: #f1f5f9;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0e0e12;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a36;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff7a00;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "id": "usr_flux_admin",
+      "name": "Saulo (Administrador FLUX)",
+      "username": "Flux",
+      "password": "$2b$10$EMm7FO400fRay/0UCO.iCOwRIwcTtoWBIzRe8JpAuvh7OT6EtpE7G",
+      "role": "admin",
+      "active": true,
+      "createdAt": "2026-11-13T12:00:00.000Z"
+    }
+  ],
+  "leads": []
+}
