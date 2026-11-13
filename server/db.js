@@ -15,9 +15,12 @@ const DB_FILE = isVercel
 
 let dbMemory = null;
 
-// Helpers para integração com Vercel KV / Upstash Redis (caso conectado na Vercel)
-const KV_URL = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
-const KV_TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+// Configuração persistente oficial Upstash KV / Redis
+const DEFAULT_KV_URL = 'https://excited-satyr-201088.upstash.io';
+const DEFAULT_KV_TOKEN = 'gQAAAAAAAxGAAAIgcDE3ZjEwNWVkMjY4N2I0NzYyOWExZThiMWY3OTc5Y2MyMg';
+
+const KV_URL = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL || DEFAULT_KV_URL;
+const KV_TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN || DEFAULT_KV_TOKEN;
 const KV_KEY = 'scm_provedores_b2b_database';
 
 async function fetchFromKv() {
@@ -31,11 +34,12 @@ async function fetchFromKv() {
     if (data && data.result) {
       const parsed = typeof data.result === 'string' ? JSON.parse(data.result) : data.result;
       if (parsed && Array.isArray(parsed.users)) {
+        console.log(`☁️ [Upstash KV Provedores] Carregados ${parsed.users.length} consultores e ${parsed.leads?.length || 0} provedores da nuvem.`);
         return parsed;
       }
     }
   } catch (err) {
-    console.warn('Aviso: falha ao ler do Vercel KV:', err.message);
+    console.warn('Aviso: falha ao ler do Upstash KV:', err.message);
   }
   return null;
 }
@@ -43,16 +47,20 @@ async function fetchFromKv() {
 async function saveToKv(data) {
   if (!KV_URL || !KV_TOKEN) return;
   try {
-    await fetch(`${KV_URL}/set/${KV_KEY}`, {
+    const payload = typeof data === 'string' ? data : JSON.stringify(data);
+    const res = await fetch(`${KV_URL}/set/${KV_KEY}`, {
       method: 'POST',
       headers: { 
         Authorization: `Bearer ${KV_TOKEN}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(typeof data === 'string' ? data : JSON.stringify(data))
+      body: payload
     });
+    if (res.ok) {
+      console.log(`☁️ [Upstash KV Provedores] Gravado na nuvem permanente com sucesso (${data.users?.length || 0} consultores).`);
+    }
   } catch (err) {
-    console.warn('Aviso: falha ao gravar no Vercel KV:', err.message);
+    console.warn('Aviso: falha ao gravar no Upstash KV:', err.message);
   }
 }
 
@@ -86,7 +94,7 @@ export async function initDb() {
   };
 
   try {
-    // 1. Tenta carregar do Vercel KV
+    // 1. Tenta carregar do Upstash KV primeiro (persistência eterna na nuvem)
     const kvData = await fetchFromKv();
     if (kvData) {
       dbMemory = kvData;
@@ -101,9 +109,6 @@ export async function initDb() {
         } catch {
           dbMemory = defaultDb;
         }
-        try {
-          fs.writeFileSync(DB_FILE, JSON.stringify(dbMemory, null, 2), 'utf-8');
-        } catch {}
       }
     } else {
       const dataDir = path.join(__dirname, 'data');
@@ -116,16 +121,21 @@ export async function initDb() {
         dbMemory = JSON.parse(raw);
       } else {
         dbMemory = defaultDb;
-        fs.writeFileSync(DB_FILE, JSON.stringify(defaultDb, null, 2), 'utf-8');
       }
     }
 
     // Garante que ambos os usuários Adm e Flux existam
+    let needsSave = false;
     for (const defUser of defaultDb.users) {
       const exists = dbMemory.users.find(u => u.username.toLowerCase() === defUser.username.toLowerCase());
       if (!exists) {
         dbMemory.users.push(defUser);
+        needsSave = true;
       }
+    }
+
+    if (needsSave || !kvData) {
+      await saveDb();
     }
 
   } catch (err) {
@@ -144,14 +154,14 @@ export function getDb() {
 export async function saveDb() {
   if (!dbMemory) return;
 
-  // 1. Salva no Vercel KV
-  saveToKv(dbMemory);
+  // 1. Salva no Upstash KV com await para garantir sincronização
+  await saveToKv(dbMemory);
 
   // 2. Salva no disco
   try {
     fs.writeFileSync(DB_FILE, JSON.stringify(dbMemory, null, 2), 'utf-8');
   } catch (err) {
-    // Em ambientes serverless estritos continua na memória
+    // Em ambientes serverless estritos continua na nuvem e na memória
   }
 }
 
