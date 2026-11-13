@@ -15,6 +15,47 @@ const DB_FILE = isVercel
 
 let dbMemory = null;
 
+// Helpers para integração com Vercel KV / Upstash Redis (caso conectado na Vercel)
+const KV_URL = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+const KV_TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+const KV_KEY = 'scm_provedores_b2b_database';
+
+async function fetchFromKv() {
+  if (!KV_URL || !KV_TOKEN) return null;
+  try {
+    const res = await fetch(`${KV_URL}/get/${KV_KEY}`, {
+      headers: { Authorization: `Bearer ${KV_TOKEN}` }
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (data && data.result) {
+      const parsed = typeof data.result === 'string' ? JSON.parse(data.result) : data.result;
+      if (parsed && Array.isArray(parsed.users)) {
+        return parsed;
+      }
+    }
+  } catch (err) {
+    console.warn('Aviso: falha ao ler do Vercel KV:', err.message);
+  }
+  return null;
+}
+
+async function saveToKv(data) {
+  if (!KV_URL || !KV_TOKEN) return;
+  try {
+    await fetch(`${KV_URL}/set/${KV_KEY}`, {
+      method: 'POST',
+      headers: { 
+        Authorization: `Bearer ${KV_TOKEN}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(typeof data === 'string' ? data : JSON.stringify(data))
+    });
+  } catch (err) {
+    console.warn('Aviso: falha ao gravar no Vercel KV:', err.message);
+  }
+}
+
 export async function initDb() {
   if (dbMemory) return;
 
@@ -45,7 +86,12 @@ export async function initDb() {
   };
 
   try {
-    if (isVercel) {
+    // 1. Tenta carregar do Vercel KV
+    const kvData = await fetchFromKv();
+    if (kvData) {
+      dbMemory = kvData;
+    } else if (isVercel) {
+      // 2. Tenta carregar do /tmp
       if (fs.existsSync(DB_FILE)) {
         const raw = fs.readFileSync(DB_FILE, 'utf-8');
         dbMemory = JSON.parse(raw);
@@ -74,19 +120,14 @@ export async function initDb() {
       }
     }
 
-    // Garante que o usuário Flux exista com privilégios de Admin
-    const adminIndex = dbMemory.users.findIndex(u => u.username.toLowerCase() === 'flux');
-    if (adminIndex === -1) {
-      dbMemory.users.unshift(defaultDb.users[0]);
-      await saveDb();
-    } else {
-      // Atualiza senha caso precise sincronizar com Flux@2026
-      const isMatch = await bcrypt.compare('Flux@2026', dbMemory.users[adminIndex].password);
-      if (!isMatch) {
-        dbMemory.users[adminIndex].password = defaultAdminPassword;
-        await saveDb();
+    // Garante que ambos os usuários Adm e Flux existam
+    for (const defUser of defaultDb.users) {
+      const exists = dbMemory.users.find(u => u.username.toLowerCase() === defUser.username.toLowerCase());
+      if (!exists) {
+        dbMemory.users.push(defUser);
       }
     }
+
   } catch (err) {
     console.error('Erro ao ler banco de dados, usando memória padrão:', err);
     dbMemory = defaultDb;
@@ -102,9 +143,53 @@ export function getDb() {
 
 export async function saveDb() {
   if (!dbMemory) return;
+
+  // 1. Salva no Vercel KV
+  saveToKv(dbMemory);
+
+  // 2. Salva no disco
   try {
     fs.writeFileSync(DB_FILE, JSON.stringify(dbMemory, null, 2), 'utf-8');
   } catch (err) {
-    console.error('Falha ao gravar arquivo de banco no disco (mantido em memória):', err.message);
+    // Em ambientes serverless estritos continua na memória
   }
+}
+
+// Sincroniza e mescla vendedores e leads para evitar perda em cold-starts da Vercel
+export async function syncDb({ users = [], leads = [] }) {
+  if (!dbMemory) await initDb();
+  let changed = false;
+
+  if (Array.isArray(users)) {
+    for (const u of users) {
+      if (!u || !u.username) continue;
+      const idx = dbMemory.users.findIndex(x => x.username.toLowerCase() === u.username.toLowerCase());
+      if (idx === -1) {
+        dbMemory.users.push(u);
+        changed = true;
+      } else {
+        if (u.password && !dbMemory.users[idx].password) {
+          dbMemory.users[idx].password = u.password;
+          changed = true;
+        }
+      }
+    }
+  }
+
+  if (Array.isArray(leads)) {
+    for (const l of leads) {
+      if (!l || !l.id) continue;
+      const idx = dbMemory.leads.findIndex(x => x.id === l.id);
+      if (idx === -1) {
+        dbMemory.leads.push(l);
+        changed = true;
+      }
+    }
+  }
+
+  if (changed) {
+    await saveDb();
+  }
+
+  return dbMemory;
 }

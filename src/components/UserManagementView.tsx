@@ -38,6 +38,7 @@ export const UserManagementView: React.FC<UserManagementViewProps> = ({ currentU
   const [editName, setEditName] = useState('');
   const [editUsername, setEditUsername] = useState('');
   const [editPassword, setEditPassword] = useState('');
+  const [syncStatus, setSyncStatus] = useState<string | null>(null);
 
   useEffect(() => {
     loadUsers();
@@ -47,11 +48,73 @@ export const UserManagementView: React.FC<UserManagementViewProps> = ({ currentU
     setLoading(true);
     try {
       const data = await api.getUsers();
+
+      // Recupera backup local do navegador
+      const localBackupRaw = localStorage.getItem('scm_provedores_vault_backup');
+      if (localBackupRaw) {
+        try {
+          const localBackup = JSON.parse(localBackupRaw);
+          if (localBackup && Array.isArray(localBackup.users) && localBackup.users.length > data.length) {
+            // Cold start detectado! Auto-sincroniza vendedores do navegador para o servidor
+            setSyncStatus('Sincronizando vendedores salvos com o servidor...');
+            await api.syncSystem({ users: localBackup.users });
+            const reloaded = await api.getUsers();
+            setUsers(reloaded);
+            setSyncStatus('✅ Vendedores sincronizados com sucesso!');
+            setLoading(false);
+            return;
+          }
+        } catch {}
+      }
+
       setUsers(data);
+
+      // Atualiza backup silencioso local
+      try {
+        const fullBackup = await api.getBackup();
+        localStorage.setItem('scm_provedores_vault_backup', JSON.stringify(fullBackup));
+      } catch {}
     } catch (err: any) {
       console.error('Erro ao carregar usuários:', err);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleDownloadBackup = async () => {
+    try {
+      const backup = await api.getBackup();
+      const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `backup_equipe_provedores_scm_${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch (err: any) {
+      alert('Erro ao baixar backup: ' + err.message);
+    }
+  };
+
+  const handleUploadBackup = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    try {
+      const text = await file.text();
+      const parsed = JSON.parse(text);
+      if (!parsed || !Array.isArray(parsed.users)) {
+        alert('Arquivo de backup inválido.');
+        return;
+      }
+      await api.restoreBackup(parsed);
+      localStorage.setItem('scm_provedores_vault_backup', JSON.stringify(parsed));
+      alert(`Backup restaurado com sucesso! ${parsed.users.length} usuários carregados.`);
+      loadUsers();
+    } catch (err: any) {
+      alert('Erro ao restaurar backup: ' + err.message);
+    } finally {
+      e.target.value = '';
     }
   };
 
@@ -122,11 +185,16 @@ export const UserManagementView: React.FC<UserManagementViewProps> = ({ currentU
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-orange-950 p-6 sm:p-8 rounded-3xl border border-slate-700 text-white shadow-xl">
+      <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-orange-950 p-6 sm:p-8 rounded-3xl border border-slate-700 text-white shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="max-w-2xl">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ff7a00]/20 border border-[#ff7a00]/40 text-[#ff7a00] text-xs font-black uppercase tracking-wider mb-3">
-            <Users className="w-4 h-4" />
-            Gestão da Equipe Comercial B2B
+          <div className="flex flex-wrap items-center gap-2 mb-3">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ff7a00]/20 border border-[#ff7a00]/40 text-[#ff7a00] text-xs font-black uppercase tracking-wider">
+              <Users className="w-4 h-4" />
+              Gestão da Equipe Comercial B2B
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-bold">
+              🛡️ Persistência Protegida Ativa
+            </span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white">
             Consultores & Controle de Acesso
@@ -134,6 +202,35 @@ export const UserManagementView: React.FC<UserManagementViewProps> = ({ currentU
           <p className="text-slate-300 text-sm mt-1.5">
             Cadastre novos consultores de vendas. Cada consultor possui isolamento total de carteira, visualizando apenas os provedores que ele minerar.
           </p>
+          {syncStatus && (
+            <p className="mt-2 text-xs font-semibold text-emerald-300 animate-fadeIn">
+              {syncStatus}
+            </p>
+          )}
+        </div>
+
+        <div className="flex sm:flex-col gap-2 shrink-0">
+          <button
+            type="button"
+            onClick={handleDownloadBackup}
+            title="Baixar arquivo de backup com todos os consultores e carteiras"
+            className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 text-xs font-bold text-white transition flex items-center justify-center gap-2 cursor-pointer shadow-sm"
+          >
+            💾 Baixar Backup
+          </button>
+
+          <label
+            title="Restaurar consultores a partir de um backup .json"
+            className="px-4 py-2.5 rounded-xl bg-[#ff7a00]/25 hover:bg-[#ff7a00]/40 border border-[#ff7a00]/50 text-xs font-bold text-[#ff7a00] transition flex items-center justify-center gap-2 cursor-pointer text-center"
+          >
+            🔄 Restaurar
+            <input
+              type="file"
+              accept=".json"
+              onChange={handleUploadBackup}
+              className="hidden"
+            />
+          </label>
         </div>
       </div>
 

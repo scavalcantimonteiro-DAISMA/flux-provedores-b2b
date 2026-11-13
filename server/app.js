@@ -7,6 +7,7 @@ import authRoutes from './routes/auth.js';
 import userRoutes from './routes/users.js';
 import leadRoutes from './routes/leads.js';
 import searchRoutes from './routes/search.js';
+import systemRoutes from './routes/system.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -25,6 +26,7 @@ app.use(['/api/auth', '/auth'], authRoutes);
 app.use(['/api/users', '/users'], userRoutes);
 app.use(['/api/leads', '/leads'], leadRoutes);
 app.use(['/api/search', '/search'], searchRoutes);
+app.use(['/api/system', '/system'], systemRoutes);
 
 // Healthcheck
 app.get(['/api/health', '/health'], (req, res) => {
