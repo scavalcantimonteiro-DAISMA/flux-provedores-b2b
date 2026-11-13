@@ -30,7 +30,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   scheduledCount
 }) => {
   return (
-    <header className="bg-[#121216] border-b border-[#282832] sticky top-0 z-40">
+    <header className="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo & System Brand */}
@@ -41,19 +41,19 @@ export const Navbar: React.FC<NavbarProps> = ({
                 alt="SCM TECH"
                 className="w-10 h-10 rounded-xl object-cover border border-[#ff7a00]/40 shadow-sm shadow-[#ff7a00]/20"
               />
-              <span className="absolute -bottom-1 -right-1 w-3 h-3 bg-[#ff7a00] border-2 border-[#121216] rounded-full"></span>
+              <span className="absolute -bottom-1 -right-1 w-3 h-3 bg-[#ff7a00] border-2 border-white rounded-full"></span>
             </div>
 
             <div className="leading-tight">
               <div className="flex items-center gap-2">
-                <span className="font-black text-white text-base tracking-tight">
+                <span className="font-black text-slate-900 text-base tracking-tight">
                   SCM TECH <span className="text-[#ff7a00]">Provedores</span>
                 </span>
-                <span className="hidden sm:inline-block px-1.5 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-[#ff7a00]/15 text-[#ff7a00] border border-[#ff7a00]/30">
+                <span className="hidden sm:inline-block px-1.5 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-orange-50 text-[#e06b00] border border-orange-200">
                   TELECOM B2B
                 </span>
               </div>
-              <p className="text-[11px] text-slate-400 hidden sm:block">
+              <p className="text-[11px] text-slate-500 hidden sm:block">
                 Captação Ativa de Provedores de Internet (ISPs)
               </p>
             </div>
@@ -66,8 +66,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => setActiveTab('finder')}
               className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 cursor-pointer ${
                 activeTab === 'finder'
-                  ? 'bg-[#ff7a00] text-slate-950 shadow-md shadow-[#ff7a00]/20'
-                  : 'text-slate-300 hover:text-white hover:bg-[#1c1c24]'
+                  ? 'bg-[#ff7a00] text-slate-950 shadow-sm shadow-[#ff7a00]/25'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               <Search className="w-4 h-4" />
@@ -79,8 +79,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => setActiveTab('portfolio')}
               className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 cursor-pointer relative ${
                 activeTab === 'portfolio'
-                  ? 'bg-[#ff7a00] text-slate-950 shadow-md shadow-[#ff7a00]/20'
-                  : 'text-slate-300 hover:text-white hover:bg-[#1c1c24]'
+                  ? 'bg-[#ff7a00] text-slate-950 shadow-sm shadow-[#ff7a00]/25'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               <Briefcase className="w-4 h-4" />
@@ -101,8 +101,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => setActiveTab('agenda')}
               className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 cursor-pointer ${
                 activeTab === 'agenda'
-                  ? 'bg-[#ff7a00] text-slate-950 shadow-md shadow-[#ff7a00]/20'
-                  : 'text-slate-300 hover:text-white hover:bg-[#1c1c24]'
+                  ? 'bg-[#ff7a00] text-slate-950 shadow-sm shadow-[#ff7a00]/25'
+                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
             >
               <Calendar className="w-4 h-4" />
@@ -111,7 +111,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <span className={`px-1.5 py-0.2 rounded-full text-[10px] font-black ${
                   activeTab === 'agenda'
                     ? 'bg-slate-950 text-white'
-                    : 'bg-emerald-500 text-slate-950'
+                    : 'bg-emerald-500 text-white'
                 }`}>
                   {scheduledCount}
                 </span>
@@ -125,8 +125,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onClick={() => setActiveTab('users')}
                   className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 cursor-pointer ${
                     activeTab === 'users'
-                      ? 'bg-[#ff7a00] text-slate-950 shadow-md shadow-[#ff7a00]/20'
-                      : 'text-slate-300 hover:text-white hover:bg-[#1c1c24]'
+                      ? 'bg-[#ff7a00] text-slate-950 shadow-sm shadow-[#ff7a00]/25'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                   }`}
                 >
                   <Users className="w-4 h-4" />
@@ -138,8 +138,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onClick={() => setActiveTab('supervisor')}
                   className={`px-3.5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 cursor-pointer ${
                     activeTab === 'supervisor'
-                      ? 'bg-[#ff7a00] text-slate-950 shadow-md shadow-[#ff7a00]/20'
-                      : 'text-slate-300 hover:text-white hover:bg-[#1c1c24]'
+                      ? 'bg-[#ff7a00] text-slate-950 shadow-sm shadow-[#ff7a00]/25'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                   }`}
                 >
                   <BarChart3 className="w-4 h-4" />
@@ -152,10 +152,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* User Profile & Logout */}
           <div className="flex items-center gap-3">
             <div className="hidden sm:flex flex-col text-right">
-              <span className="text-xs font-extrabold text-white leading-tight">
+              <span className="text-xs font-extrabold text-slate-800 leading-tight">
                 {user.name}
               </span>
-              <span className="text-[10px] text-[#ff7a00] font-mono">
+              <span className="text-[10px] text-[#e06b00] font-mono font-bold">
                 {user.role === 'admin' ? '🛡️ Administrador' : '💼 Consultor B2B'}
               </span>
             </div>
@@ -164,7 +164,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               type="button"
               onClick={onLogout}
               title="Sair do Sistema"
-              className="p-2 rounded-xl border border-[#282832] bg-[#18181f] text-slate-400 hover:text-rose-400 hover:bg-rose-950/30 hover:border-rose-900 transition cursor-pointer"
+              className="p-2 rounded-xl border border-slate-200 bg-slate-50 text-slate-600 hover:text-rose-600 hover:bg-rose-50 hover:border-rose-200 transition cursor-pointer"
             >
               <LogOut className="w-4 h-4" />
             </button>
@@ -173,12 +173,12 @@ export const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       {/* Mobile Nav Bar */}
-      <div className="md:hidden flex items-center justify-around py-2 border-t border-[#282832] bg-[#0e0e12] px-2 overflow-x-auto">
+      <div className="md:hidden flex items-center justify-around py-2 border-t border-slate-200 bg-slate-50 px-2 overflow-x-auto">
         <button
           type="button"
           onClick={() => setActiveTab('finder')}
           className={`px-3 py-1.5 rounded-lg text-xs font-bold ${
-            activeTab === 'finder' ? 'bg-[#ff7a00] text-slate-950' : 'text-slate-400'
+            activeTab === 'finder' ? 'bg-[#ff7a00] text-slate-950' : 'text-slate-600'
           }`}
         >
           Minerar
@@ -187,7 +187,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           type="button"
           onClick={() => setActiveTab('portfolio')}
           className={`px-3 py-1.5 rounded-lg text-xs font-bold ${
-            activeTab === 'portfolio' ? 'bg-[#ff7a00] text-slate-950' : 'text-slate-400'
+            activeTab === 'portfolio' ? 'bg-[#ff7a00] text-slate-950' : 'text-slate-600'
           }`}
         >
           Carteira ({leadsCount})
@@ -196,7 +196,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           type="button"
           onClick={() => setActiveTab('agenda')}
           className={`px-3 py-1.5 rounded-lg text-xs font-bold ${
-            activeTab === 'agenda' ? 'bg-[#ff7a00] text-slate-950' : 'text-slate-400'
+            activeTab === 'agenda' ? 'bg-[#ff7a00] text-slate-950' : 'text-slate-600'
           }`}
         >
           Agenda ({scheduledCount})
@@ -207,7 +207,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               type="button"
               onClick={() => setActiveTab('users')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold ${
-                activeTab === 'users' ? 'bg-[#ff7a00] text-slate-950' : 'text-slate-400'
+                activeTab === 'users' ? 'bg-[#ff7a00] text-slate-950' : 'text-slate-600'
               }`}
             >
               Equipe
@@ -216,7 +216,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               type="button"
               onClick={() => setActiveTab('supervisor')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold ${
-                activeTab === 'supervisor' ? 'bg-[#ff7a00] text-slate-950' : 'text-slate-400'
+                activeTab === 'supervisor' ? 'bg-[#ff7a00] text-slate-950' : 'text-slate-600'
               }`}
             >
               Painel

@@ -99,9 +99,9 @@ export const VisitAgendaView: React.FC<VisitAgendaViewProps> = ({
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-[#121216] via-[#1a1a24] to-emerald-950/40 p-6 sm:p-8 rounded-3xl border border-[#282832] text-white shadow-xl">
+      <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-emerald-950 p-6 sm:p-8 rounded-3xl border border-slate-700 text-white shadow-xl">
         <div className="max-w-2xl">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-black uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-black uppercase tracking-wider mb-3">
             <CalendarCheck className="w-4 h-4" />
             Cronograma Comercial & Técnico de ISPs
           </div>
@@ -116,15 +116,15 @@ export const VisitAgendaView: React.FC<VisitAgendaViewProps> = ({
 
       {/* Lista de Visitas */}
       {loading ? (
-        <div className="p-12 text-center text-slate-500 bg-[#121216] rounded-3xl border border-[#282832]">
+        <div className="p-12 text-center text-slate-400 bg-white rounded-3xl border border-slate-200 shadow-sm">
           <div className="inline-block w-8 h-8 border-3 border-[#ff7a00] border-t-transparent rounded-full animate-spin mb-3"></div>
           <p className="text-sm font-medium">Carregando agendamentos...</p>
         </div>
       ) : scheduledLeads.length === 0 ? (
-        <div className="p-12 text-center bg-[#121216] rounded-3xl border border-[#282832]">
-          <CalendarCheck className="w-12 h-12 text-slate-600 mx-auto mb-3" />
-          <h3 className="text-base font-bold text-white">Nenhuma reunião ou amostra agendada no momento</h3>
-          <p className="text-xs text-slate-400 mt-1 max-w-sm mx-auto">
+        <div className="p-12 text-center bg-white rounded-3xl border border-slate-200 shadow-sm">
+          <CalendarCheck className="w-12 h-12 text-slate-300 mx-auto mb-3" />
+          <h3 className="text-base font-bold text-slate-800">Nenhuma reunião ou amostra agendada no momento</h3>
+          <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
             Acesse a aba <strong>"Minha Carteira"</strong>, clique em <strong>"Registrar Contato / Desfecho"</strong> e selecione a opção <strong>"Visita Comercial Agendada"</strong> ou <strong>"Amostra Técnica"</strong> para alimentar esta agenda.
           </p>
         </div>
@@ -139,14 +139,14 @@ export const VisitAgendaView: React.FC<VisitAgendaViewProps> = ({
                 key={lead.id}
                 className={`p-5 rounded-3xl border transition shadow-sm flex flex-col justify-between gap-4 ${
                   isToday
-                    ? 'bg-[#181824] border-emerald-500/60 ring-1 ring-emerald-500/30'
-                    : 'bg-[#121216] border-[#282832]'
+                    ? 'bg-emerald-50/50 border-emerald-300 ring-2 ring-emerald-500/20'
+                    : 'bg-white border-slate-200 hover:border-slate-300'
                 }`}
               >
                 <div className="space-y-3">
                   {/* Badge de Data */}
                   <div className="flex items-center justify-between">
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/15 border border-emerald-500/30 text-emerald-400">
+                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 border border-emerald-200 text-emerald-800">
                       <Clock className="w-3.5 h-3.5" />
                       <span>
                         {dateObj
@@ -154,46 +154,46 @@ export const VisitAgendaView: React.FC<VisitAgendaViewProps> = ({
                           : 'Horário a combinar'}
                       </span>
                       {isToday && (
-                        <span className="ml-1 px-1.5 py-0.2 rounded bg-emerald-500 text-slate-950 text-[10px] font-black uppercase">
+                        <span className="ml-1 px-1.5 py-0.2 rounded bg-emerald-600 text-white text-[10px] font-black uppercase">
                           Hoje!
                         </span>
                       )}
                     </div>
 
-                    <span className="px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-[#ff7a00]/15 text-[#ff7a00] border border-[#ff7a00]/30">
+                    <span className="px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-orange-50 text-[#e06b00] border border-orange-200">
                       {lead.porte}
                     </span>
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-extrabold text-white leading-tight">
+                    <h3 className="text-lg font-extrabold text-slate-900 leading-tight">
                       {lead.tradeName}
                     </h3>
-                    <p className="text-xs text-slate-400 font-mono mt-0.5">
+                    <p className="text-xs text-slate-500 font-mono mt-0.5">
                       {lead.companyName} • CNPJ: {lead.cnpj}
                     </p>
                   </div>
 
                   {/* Informações de Local & Decisor */}
-                  <div className="space-y-1.5 text-xs text-slate-300">
+                  <div className="space-y-1.5 text-xs text-slate-700">
                     <div className="flex items-center gap-2">
-                      <MapPin className="w-4 h-4 text-slate-500 shrink-0" />
+                      <MapPin className="w-4 h-4 text-slate-400 shrink-0" />
                       <span>{lead.street}, {lead.number} - {lead.neighborhood}, {lead.city}/{lead.state}</span>
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <Building2 className="w-4 h-4 text-slate-500 shrink-0" />
-                      <span>Decisor: <strong className="text-white">{lead.contactPerson}</strong> ({lead.contactRole})</span>
+                      <Building2 className="w-4 h-4 text-slate-400 shrink-0" />
+                      <span>Decisor: <strong className="text-slate-900 font-bold">{lead.contactPerson}</strong> ({lead.contactRole})</span>
                     </div>
 
-                    <div className="flex items-center gap-2 text-slate-400">
+                    <div className="flex items-center gap-2 text-slate-600">
                       <Package className="w-4 h-4 text-[#ff7a00] shrink-0" />
                       <span>Demanda: {lead.materialDemand}</span>
                     </div>
 
                     {lead.visitNotes && (
-                      <div className="mt-2 p-2.5 rounded-xl bg-[#0e0e12] border border-[#22222d] text-xs text-slate-300">
-                        <strong className="text-slate-400 block text-[11px] mb-0.5">Pauta da Visita:</strong>
+                      <div className="mt-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700">
+                        <strong className="text-slate-500 block text-[11px] mb-0.5">Pauta da Visita:</strong>
                         <p>{lead.visitNotes}</p>
                       </div>
                     )}
@@ -201,11 +201,11 @@ export const VisitAgendaView: React.FC<VisitAgendaViewProps> = ({
                 </div>
 
                 {/* Ações Rápidas */}
-                <div className="pt-2 border-t border-[#22222d] flex flex-wrap items-center justify-between gap-2">
+                <div className="pt-2 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
                     <a
                       href={`tel:${lead.phone.replace(/\D/g, '')}`}
-                      className="p-2 rounded-xl bg-[#1c1c24] hover:bg-[#282834] text-slate-300 transition"
+                      className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition"
                       title="Ligar"
                     >
                       <Phone className="w-3.5 h-3.5 text-[#ff7a00]" />

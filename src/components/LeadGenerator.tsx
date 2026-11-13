@@ -155,9 +155,9 @@ export const LeadGenerator: React.FC<LeadGeneratorProps> = ({ currentUser, onLea
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-[#121216] via-[#1a1a24] to-[#ff7a00]/20 border border-[#282832] p-6 sm:p-8 rounded-3xl relative overflow-hidden shadow-xl">
+      <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-orange-950 p-6 sm:p-8 rounded-3xl border border-slate-700 text-white shadow-xl relative overflow-hidden">
         <div className="relative z-10 max-w-2xl">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ff7a00]/15 border border-[#ff7a00]/30 text-[#ff7a00] text-xs font-black uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ff7a00]/20 border border-[#ff7a00]/40 text-[#ff7a00] text-xs font-black uppercase tracking-wider mb-3">
             <Zap className="w-3.5 h-3.5" />
             Mineração de ISPs em Todo o Brasil
           </div>
@@ -171,10 +171,10 @@ export const LeadGenerator: React.FC<LeadGeneratorProps> = ({ currentUser, onLea
       </div>
 
       {/* Control Panel / Filters */}
-      <div className="bg-[#121216] border border-[#282832] rounded-3xl p-6 shadow-xl space-y-6">
+      <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm space-y-6">
         {/* Step 1: Porte do Provedor */}
         <div>
-          <label className="block text-xs font-black uppercase tracking-wider text-slate-400 mb-3">
+          <label className="block text-xs font-black uppercase tracking-wider text-slate-700 mb-3">
             1. Porte do Provedor (Assinantes Ativos)
           </label>
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
@@ -183,15 +183,15 @@ export const LeadGenerator: React.FC<LeadGeneratorProps> = ({ currentUser, onLea
               onClick={() => setSelectedPorte('ALL')}
               className={`p-4 rounded-2xl border text-left transition cursor-pointer ${
                 selectedPorte === 'ALL'
-                  ? 'bg-[#ff7a00]/15 border-[#ff7a00] text-white ring-1 ring-[#ff7a00]'
-                  : 'bg-[#18181f] border-[#282832] text-slate-300 hover:border-slate-600'
+                  ? 'bg-orange-50 border-2 border-[#ff7a00] text-slate-950 shadow-sm'
+                  : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300'
               }`}
             >
               <div className="flex items-center justify-between mb-1">
                 <span className="font-extrabold text-sm block">Todos os Portes</span>
-                <Layers className={`w-4 h-4 ${selectedPorte === 'ALL' ? 'text-[#ff7a00]' : 'text-slate-500'}`} />
+                <Layers className={`w-4 h-4 ${selectedPorte === 'ALL' ? 'text-[#e06b00]' : 'text-slate-400'}`} />
               </div>
-              <p className="text-xs text-slate-400">Mix variado de pequeno, médio e grande porte</p>
+              <p className="text-xs text-slate-500">Mix variado de pequeno, médio e grande porte</p>
             </button>
 
             <button
@@ -199,15 +199,15 @@ export const LeadGenerator: React.FC<LeadGeneratorProps> = ({ currentUser, onLea
               onClick={() => setSelectedPorte('PEQUENO')}
               className={`p-4 rounded-2xl border text-left transition cursor-pointer ${
                 selectedPorte === 'PEQUENO'
-                  ? 'bg-[#ff7a00]/15 border-[#ff7a00] text-white ring-1 ring-[#ff7a00]'
-                  : 'bg-[#18181f] border-[#282832] text-slate-300 hover:border-slate-600'
+                  ? 'bg-orange-50 border-2 border-[#ff7a00] text-slate-950 shadow-sm'
+                  : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300'
               }`}
             >
               <div className="flex items-center justify-between mb-1">
                 <span className="font-extrabold text-sm block">Pequeno Porte</span>
-                <Package className={`w-4 h-4 ${selectedPorte === 'PEQUENO' ? 'text-[#ff7a00]' : 'text-slate-500'}`} />
+                <Package className={`w-4 h-4 ${selectedPorte === 'PEQUENO' ? 'text-[#e06b00]' : 'text-slate-400'}`} />
               </div>
-              <p className="text-xs text-slate-400">A partir de 15 a 1.000 clientes (início de rede, FTTH local)</p>
+              <p className="text-xs text-slate-500">A partir de 15 a 1.000 clientes (início de rede, FTTH local)</p>
             </button>
 
             <button
@@ -215,15 +215,15 @@ export const LeadGenerator: React.FC<LeadGeneratorProps> = ({ currentUser, onLea
               onClick={() => setSelectedPorte('MEDIO')}
               className={`p-4 rounded-2xl border text-left transition cursor-pointer ${
                 selectedPorte === 'MEDIO'
-                  ? 'bg-[#ff7a00]/15 border-[#ff7a00] text-white ring-1 ring-[#ff7a00]'
-                  : 'bg-[#18181f] border-[#282832] text-slate-300 hover:border-slate-600'
+                  ? 'bg-orange-50 border-2 border-[#ff7a00] text-slate-950 shadow-sm'
+                  : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300'
               }`}
             >
               <div className="flex items-center justify-between mb-1">
                 <span className="font-extrabold text-sm block">Médio Porte</span>
-                <Building2 className={`w-4 h-4 ${selectedPorte === 'MEDIO' ? 'text-[#ff7a00]' : 'text-slate-500'}`} />
+                <Building2 className={`w-4 h-4 ${selectedPorte === 'MEDIO' ? 'text-[#e06b00]' : 'text-slate-400'}`} />
               </div>
-              <p className="text-xs text-slate-400">1.000 a 10.000 clientes (anéis ópticos e várias cidades)</p>
+              <p className="text-xs text-slate-500">1.000 a 10.000 clientes (anéis ópticos e várias cidades)</p>
             </button>
 
             <button
@@ -231,30 +231,30 @@ export const LeadGenerator: React.FC<LeadGeneratorProps> = ({ currentUser, onLea
               onClick={() => setSelectedPorte('GRANDE')}
               className={`p-4 rounded-2xl border text-left transition cursor-pointer ${
                 selectedPorte === 'GRANDE'
-                  ? 'bg-[#ff7a00]/15 border-[#ff7a00] text-white ring-1 ring-[#ff7a00]'
-                  : 'bg-[#18181f] border-[#282832] text-slate-300 hover:border-slate-600'
+                  ? 'bg-orange-50 border-2 border-[#ff7a00] text-slate-950 shadow-sm'
+                  : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300'
               }`}
             >
               <div className="flex items-center justify-between mb-1">
                 <span className="font-extrabold text-sm block">Grande Porte</span>
-                <Wifi className={`w-4 h-4 ${selectedPorte === 'GRANDE' ? 'text-[#ff7a00]' : 'text-slate-500'}`} />
+                <Wifi className={`w-4 h-4 ${selectedPorte === 'GRANDE' ? 'text-[#e06b00]' : 'text-slate-400'}`} />
               </div>
-              <p className="text-xs text-slate-400">+10.000 clientes (ASN próprio e compras em escala)</p>
+              <p className="text-xs text-slate-500">+10.000 clientes (ASN próprio e compras em escala)</p>
             </button>
           </div>
         </div>
 
         {/* Step 2: Estado, Cidade e Volume */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-1">
           {/* Estado */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
               2. Estado (UF)
             </label>
             <select
               value={selectedState}
               onChange={(e) => handleStateChange(e.target.value)}
-              className="w-full px-3.5 py-3 rounded-xl border border-[#282832] bg-[#18181f] text-sm font-semibold text-white focus:outline-none focus:border-[#ff7a00] focus:ring-1 focus:ring-[#ff7a00]"
+              className="w-full px-3.5 py-3 rounded-xl border border-slate-300 bg-white text-sm font-semibold text-slate-800 focus:outline-none focus:border-[#ff7a00] focus:ring-2 focus:ring-[#ff7a00]/20"
             >
               {states.map((s) => (
                 <option key={s.uf} value={s.uf}>
@@ -266,13 +266,13 @@ export const LeadGenerator: React.FC<LeadGeneratorProps> = ({ currentUser, onLea
 
           {/* Cidade */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
               3. Cidade / Região
             </label>
             <select
               value={selectedCity}
               onChange={(e) => setSelectedCity(e.target.value)}
-              className="w-full px-3.5 py-3 rounded-xl border border-[#282832] bg-[#18181f] text-sm font-semibold text-white focus:outline-none focus:border-[#ff7a00] focus:ring-1 focus:ring-[#ff7a00]"
+              className="w-full px-3.5 py-3 rounded-xl border border-slate-300 bg-white text-sm font-semibold text-slate-800 focus:outline-none focus:border-[#ff7a00] focus:ring-2 focus:ring-[#ff7a00]/20"
             >
               <option value="ALL">🌐 Todas as Cidades do Estado ({availableCities.length} polos)</option>
               {availableCities.map((c) => (
@@ -285,13 +285,13 @@ export const LeadGenerator: React.FC<LeadGeneratorProps> = ({ currentUser, onLea
 
           {/* Quantidade */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
               4. Quantidade de Provedores
             </label>
             <select
               value={leadCount}
               onChange={(e) => setLeadCount(Number(e.target.value))}
-              className="w-full px-3.5 py-3 rounded-xl border border-[#282832] bg-[#18181f] text-sm font-black text-[#ff7a00] focus:outline-none focus:border-[#ff7a00] focus:ring-1 focus:ring-[#ff7a00]"
+              className="w-full px-3.5 py-3 rounded-xl border border-slate-300 bg-white text-sm font-black text-[#e06b00] focus:outline-none focus:border-[#ff7a00] focus:ring-2 focus:ring-[#ff7a00]/20"
             >
               <option value={50}>⚡ 50 Provedores (Rápido)</option>
               <option value={100}>⚡ 100 Provedores</option>
@@ -309,7 +309,7 @@ export const LeadGenerator: React.FC<LeadGeneratorProps> = ({ currentUser, onLea
             type="button"
             onClick={handleGenerate}
             disabled={generating}
-            className="w-full py-4 px-6 rounded-2xl bg-[#ff7a00] hover:bg-[#e06b00] text-slate-950 font-black text-base transition flex items-center justify-center gap-2 shadow-xl shadow-[#ff7a00]/25 cursor-pointer disabled:opacity-50"
+            className="w-full py-4 px-6 rounded-2xl bg-[#ff7a00] hover:bg-[#e06b00] text-slate-950 font-black text-base transition flex items-center justify-center gap-2 shadow-lg shadow-[#ff7a00]/25 cursor-pointer disabled:opacity-50"
           >
             {generating ? (
               <>
@@ -328,8 +328,8 @@ export const LeadGenerator: React.FC<LeadGeneratorProps> = ({ currentUser, onLea
 
       {/* Success Notification */}
       {importSuccessMessage && (
-        <div className="p-4 rounded-2xl bg-emerald-950/60 border border-emerald-800 text-emerald-200 text-sm flex items-center gap-3 animate-fadeIn">
-          <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+        <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-sm flex items-center gap-3 animate-fadeIn">
+          <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
           <span>{importSuccessMessage} Redirecionando para a sua carteira...</span>
         </div>
       )}
@@ -338,17 +338,17 @@ export const LeadGenerator: React.FC<LeadGeneratorProps> = ({ currentUser, onLea
       {generatedLeads.length > 0 && (
         <div className="space-y-4 animate-fadeIn">
           {/* Action Bar for Results */}
-          <div className="bg-[#121216] border border-[#282832] p-4 rounded-2xl flex flex-wrap items-center justify-between gap-4">
+          <div className="bg-white border border-slate-200 p-4 rounded-2xl flex flex-wrap items-center justify-between gap-4 shadow-sm">
             <div className="flex items-center gap-3">
               <button
                 type="button"
                 onClick={toggleSelectAll}
-                className="flex items-center gap-2 text-xs font-bold text-slate-300 hover:text-white transition cursor-pointer"
+                className="flex items-center gap-2 text-xs font-bold text-slate-700 hover:text-slate-950 transition cursor-pointer"
               >
                 {selectedLeadIds.size === generatedLeads.length ? (
                   <CheckSquare className="w-5 h-5 text-[#ff7a00]" />
                 ) : (
-                  <Square className="w-5 h-5 text-slate-500" />
+                  <Square className="w-5 h-5 text-slate-400" />
                 )}
                 <span>
                   Selecionar Todos ({selectedLeadIds.size}/{generatedLeads.length})
@@ -359,11 +359,11 @@ export const LeadGenerator: React.FC<LeadGeneratorProps> = ({ currentUser, onLea
             {/* Atribuir a Vendedor (se for Admin) */}
             {currentUser.role === 'admin' && allUsers.length > 1 && (
               <div className="flex items-center gap-2">
-                <span className="text-xs text-slate-400">Atribuir a:</span>
+                <span className="text-xs text-slate-500">Atribuir a:</span>
                 <select
                   value={assignedUserId}
                   onChange={(e) => setAssignedUserId(e.target.value)}
-                  className="px-3 py-1.5 rounded-xl border border-[#282832] bg-[#18181f] text-xs font-bold text-white focus:outline-none focus:border-[#ff7a00]"
+                  className="px-3 py-1.5 rounded-xl border border-slate-300 bg-white text-xs font-bold text-slate-800 focus:outline-none focus:border-[#ff7a00]"
                 >
                   <option value={currentUser.id}>Minha Própria Carteira (Admin)</option>
                   {allUsers
@@ -382,16 +382,16 @@ export const LeadGenerator: React.FC<LeadGeneratorProps> = ({ currentUser, onLea
               type="button"
               onClick={handleImportSelected}
               disabled={importing || selectedLeadIds.size === 0}
-              className="py-2.5 px-5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-xs transition flex items-center gap-2 shadow-lg shadow-emerald-500/20 cursor-pointer disabled:opacity-40"
+              className="py-2.5 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs transition flex items-center gap-2 shadow-sm cursor-pointer disabled:opacity-40"
             >
               {importing ? (
                 <>
-                  <div className="w-4 h-4 border-2 border-slate-950 border-t-transparent rounded-full animate-spin"></div>
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                   <span>Salvando na Carteira...</span>
                 </>
               ) : (
                 <>
-                  <Download className="w-4 h-4 text-slate-950" />
+                  <Download className="w-4 h-4 text-white" />
                   <span>Importar {selectedLeadIds.size} Provedores para Carteira</span>
                 </>
               )}
@@ -408,8 +408,8 @@ export const LeadGenerator: React.FC<LeadGeneratorProps> = ({ currentUser, onLea
                   onClick={() => toggleSelectLead(lead.id)}
                   className={`p-4 rounded-2xl border transition cursor-pointer flex flex-col justify-between gap-3 ${
                     isSelected
-                      ? 'bg-[#181822] border-[#ff7a00]/60 ring-1 ring-[#ff7a00]/40'
-                      : 'bg-[#121216] border-[#282832] hover:border-slate-700'
+                      ? 'bg-orange-50/40 border-orange-300 ring-1 ring-[#ff7a00]/30 shadow-sm'
+                      : 'bg-white border-slate-200 hover:border-slate-300 shadow-xs'
                   }`}
                 >
                   <div>
@@ -420,45 +420,45 @@ export const LeadGenerator: React.FC<LeadGeneratorProps> = ({ currentUser, onLea
                           {isSelected ? (
                             <CheckSquare className="w-4 h-4" />
                           ) : (
-                            <Square className="w-4 h-4 text-slate-600" />
+                            <Square className="w-4 h-4 text-slate-300" />
                           )}
                         </div>
                         <div>
-                          <h3 className="font-extrabold text-white text-base leading-tight">
+                          <h3 className="font-extrabold text-slate-900 text-base leading-tight">
                             {lead.tradeName}
                           </h3>
-                          <p className="text-[11px] text-slate-400 font-mono mt-0.5">
+                          <p className="text-[11px] text-slate-500 font-mono mt-0.5">
                             {lead.companyName} • CNPJ: {lead.cnpj}
                           </p>
                         </div>
                       </div>
 
-                      <span className="px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-[#ff7a00]/15 text-[#ff7a00] border border-[#ff7a00]/30 shrink-0">
+                      <span className="px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-orange-50 text-[#e06b00] border border-orange-200 shrink-0">
                         {lead.porte}
                       </span>
                     </div>
 
                     {/* Technical Telecom Info: ASN & Subscribers */}
                     <div className="flex flex-wrap items-center gap-2 mt-3 text-xs">
-                      <span className="px-2 py-0.5 rounded bg-blue-950/60 border border-blue-800 text-blue-300 font-mono font-bold">
+                      <span className="px-2 py-0.5 rounded bg-blue-50 border border-blue-200 text-blue-800 font-mono font-bold">
                         🌐 {lead.asn}
                       </span>
-                      <span className="px-2 py-0.5 rounded bg-[#1f1f2a] border border-[#343444] text-slate-300 font-semibold">
+                      <span className="px-2 py-0.5 rounded bg-orange-50 border border-orange-200 text-orange-900 font-semibold">
                         👥 {lead.estimatedSubscribers}
                       </span>
-                      <span className="inline-flex items-center gap-1 text-slate-400">
-                        <MapPin className="w-3.5 h-3.5 text-slate-500" />
+                      <span className="inline-flex items-center gap-1 text-slate-500">
+                        <MapPin className="w-3.5 h-3.5 text-slate-400" />
                         {lead.city}/{lead.state}
                       </span>
                     </div>
 
                     {/* Decisor & Material Demand */}
-                    <div className="mt-2.5 p-2.5 rounded-xl bg-[#0e0e12] border border-[#22222d] text-xs space-y-1">
-                      <p className="text-slate-300">
-                        Decisor de Compras: <strong className="text-white">{lead.contactPerson}</strong> ({lead.contactRole})
+                    <div className="mt-2.5 p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-1">
+                      <p className="text-slate-700">
+                        Decisor de Compras: <strong className="text-slate-950 font-bold">{lead.contactPerson}</strong> ({lead.contactRole})
                       </p>
-                      <p className="text-[11px] text-slate-400 line-clamp-1">
-                        📦 Demanda: <span className="text-slate-300">{lead.materialDemand}</span>
+                      <p className="text-[11px] text-slate-600 line-clamp-1">
+                        📦 Demanda: <span className="text-slate-800 font-medium">{lead.materialDemand}</span>
                       </p>
                     </div>
                   </div>
@@ -468,7 +468,7 @@ export const LeadGenerator: React.FC<LeadGeneratorProps> = ({ currentUser, onLea
                     <a
                       href={`tel:${lead.phone.replace(/\D/g, '')}`}
                       title={`Ligar para ${lead.phone}`}
-                      className="flex-1 py-1.5 px-3 rounded-xl bg-[#1c1c24] hover:bg-[#282834] text-slate-200 text-xs font-bold transition flex items-center justify-center gap-1.5"
+                      className="flex-1 py-1.5 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition flex items-center justify-center gap-1.5"
                     >
                       <Phone className="w-3.5 h-3.5 text-[#ff7a00]" />
                       <span>{lead.phone}</span>

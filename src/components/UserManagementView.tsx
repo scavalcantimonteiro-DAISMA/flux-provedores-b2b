@@ -122,9 +122,9 @@ export const UserManagementView: React.FC<UserManagementViewProps> = ({ currentU
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-[#121216] via-[#1a1a24] to-[#ff7a00]/20 p-6 sm:p-8 rounded-3xl border border-[#282832] text-white shadow-xl">
+      <div className="bg-gradient-to-r from-slate-900 via-slate-800 to-orange-950 p-6 sm:p-8 rounded-3xl border border-slate-700 text-white shadow-xl">
         <div className="max-w-2xl">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ff7a00]/15 border border-[#ff7a00]/30 text-[#ff7a00] text-xs font-black uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ff7a00]/20 border border-[#ff7a00]/40 text-[#ff7a00] text-xs font-black uppercase tracking-wider mb-3">
             <Users className="w-4 h-4" />
             Gestão da Equipe Comercial B2B
           </div>
@@ -139,21 +139,21 @@ export const UserManagementView: React.FC<UserManagementViewProps> = ({ currentU
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Formulário de Criação */}
-        <div className="bg-[#121216] border border-[#282832] rounded-3xl p-6 shadow-xl h-fit">
-          <div className="flex items-center gap-2 mb-4 pb-3 border-b border-[#282832]">
+        <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm h-fit">
+          <div className="flex items-center gap-2 mb-4 pb-3 border-b border-slate-200">
             <UserPlus className="w-5 h-5 text-[#ff7a00]" />
-            <h2 className="text-base font-extrabold text-white">Novo Consultor</h2>
+            <h2 className="text-base font-extrabold text-slate-900">Novo Consultor</h2>
           </div>
 
           {error && (
-            <div className="mb-4 p-3 rounded-xl bg-rose-950/50 border border-rose-800 text-rose-200 text-xs">
+            <div className="mb-4 p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs">
               {error}
             </div>
           )}
 
           <form onSubmit={handleCreateUser} className="space-y-4">
             <div>
-              <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
                 Nome Completo
               </label>
               <input
@@ -162,12 +162,12 @@ export const UserManagementView: React.FC<UserManagementViewProps> = ({ currentU
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Ex: Matheus Silva"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#282832] bg-[#18181f] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#ff7a00]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#ff7a00]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
                 Login / Usuário
               </label>
               <input
@@ -176,12 +176,12 @@ export const UserManagementView: React.FC<UserManagementViewProps> = ({ currentU
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Ex: matheus.scm"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#282832] bg-[#18181f] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#ff7a00]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#ff7a00]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
                 Senha de Acesso
               </label>
               <input
@@ -190,18 +190,18 @@ export const UserManagementView: React.FC<UserManagementViewProps> = ({ currentU
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#282832] bg-[#18181f] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#ff7a00]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50 focus:bg-white text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#ff7a00]"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
                 Tipo de Perfil
               </label>
               <select
                 value={role}
                 onChange={(e) => setRole(e.target.value as UserRole)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-[#282832] bg-[#18181f] text-xs font-semibold text-white focus:outline-none focus:border-[#ff7a00]"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-xs font-semibold text-slate-800 focus:outline-none focus:border-[#ff7a00]"
               >
                 <option value="vendedor">💼 Consultor de Vendas (Carteira Própria)</option>
                 <option value="admin">🛡️ Administrador (Acesso Geral)</option>
@@ -211,7 +211,7 @@ export const UserManagementView: React.FC<UserManagementViewProps> = ({ currentU
             <button
               type="submit"
               disabled={submitting}
-              className="w-full py-3 px-4 rounded-xl bg-[#ff7a00] hover:bg-[#e06b00] text-slate-950 font-black text-xs transition flex items-center justify-center gap-2 shadow-md shadow-[#ff7a00]/25 cursor-pointer disabled:opacity-50"
+              className="w-full py-3 px-4 rounded-xl bg-[#ff7a00] hover:bg-[#e06b00] text-slate-950 font-black text-xs transition flex items-center justify-center gap-2 shadow-sm cursor-pointer disabled:opacity-50"
             >
               {submitting ? 'Cadastrando...' : 'Cadastrar Consultor'}
             </button>
@@ -219,59 +219,59 @@ export const UserManagementView: React.FC<UserManagementViewProps> = ({ currentU
         </div>
 
         {/* Tabela de Usuários */}
-        <div className="lg:col-span-2 bg-[#121216] border border-[#282832] rounded-3xl p-6 shadow-xl">
-          <div className="flex items-center justify-between mb-4 pb-3 border-b border-[#282832]">
-            <h2 className="text-base font-extrabold text-white">Consultores Cadastrados ({users.length})</h2>
+        <div className="lg:col-span-2 bg-white border border-slate-200 rounded-3xl p-6 shadow-sm">
+          <div className="flex items-center justify-between mb-4 pb-3 border-b border-slate-200">
+            <h2 className="text-base font-extrabold text-slate-900">Consultores Cadastrados ({users.length})</h2>
           </div>
 
           {loading ? (
-            <div className="p-8 text-center text-slate-500">
+            <div className="p-8 text-center text-slate-400">
               <div className="inline-block w-6 h-6 border-2 border-[#ff7a00] border-t-transparent rounded-full animate-spin mb-2"></div>
               <p className="text-xs">Carregando consultores...</p>
             </div>
           ) : (
-            <div className="divide-y divide-[#22222d] space-y-3">
+            <div className="divide-y divide-slate-100 space-y-3">
               {users.map((u) => {
                 const m = u.metrics || { totalLeads: 0, totalCalls: 0, quotesSent: 0, scheduledVisits: 0, closedDeals: 0 };
                 return (
                   <div key={u.id} className="pt-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="font-extrabold text-white text-sm">{u.name}</span>
+                        <span className="font-extrabold text-slate-900 text-sm">{u.name}</span>
                         <span className="text-xs text-slate-400 font-mono">@{u.username}</span>
                         {u.role === 'admin' ? (
-                          <span className="px-2 py-0.2 rounded text-[10px] font-black uppercase tracking-wider bg-[#ff7a00]/15 text-[#ff7a00] border border-[#ff7a00]/30">
+                          <span className="px-2 py-0.2 rounded text-[10px] font-black uppercase tracking-wider bg-orange-50 text-[#e06b00] border border-orange-200">
                             ADMIN
                           </span>
                         ) : (
-                          <span className="px-2 py-0.2 rounded text-[10px] font-black uppercase tracking-wider bg-blue-950/50 text-blue-300 border border-blue-800">
+                          <span className="px-2 py-0.2 rounded text-[10px] font-black uppercase tracking-wider bg-blue-50 text-blue-700 border border-blue-200">
                             CONSULTOR
                           </span>
                         )}
                         {u.active === false && (
-                          <span className="px-2 py-0.2 rounded text-[10px] font-black uppercase tracking-wider bg-rose-950/50 text-rose-300 border border-rose-800">
+                          <span className="px-2 py-0.2 rounded text-[10px] font-black uppercase tracking-wider bg-rose-50 text-rose-700 border border-rose-200">
                             INATIVO
                           </span>
                         )}
                       </div>
 
                       {/* Métricas rápidas */}
-                      <div className="flex flex-wrap items-center gap-3 mt-1.5 text-xs text-slate-400">
+                      <div className="flex flex-wrap items-center gap-3 mt-1.5 text-xs text-slate-600">
                         <span className="flex items-center gap-1">
-                          <Briefcase className="w-3.5 h-3.5 text-slate-500" />
-                          Leads: <strong className="text-white">{m.totalLeads}</strong>
+                          <Briefcase className="w-3.5 h-3.5 text-slate-400" />
+                          Leads: <strong className="text-slate-900">{m.totalLeads}</strong>
                         </span>
                         <span className="flex items-center gap-1">
-                          <Phone className="w-3.5 h-3.5 text-slate-500" />
-                          Ligações: <strong className="text-white">{m.totalCalls}</strong>
+                          <Phone className="w-3.5 h-3.5 text-slate-400" />
+                          Ligações: <strong className="text-slate-900">{m.totalCalls}</strong>
                         </span>
                         <span className="flex items-center gap-1">
-                          <FileSpreadsheet className="w-3.5 h-3.5 text-blue-400" />
-                          Cotações: <strong className="text-blue-300">{m.quotesSent}</strong>
+                          <FileSpreadsheet className="w-3.5 h-3.5 text-blue-600" />
+                          Cotações: <strong className="text-blue-800">{m.quotesSent}</strong>
                         </span>
                         <span className="flex items-center gap-1">
-                          <Sparkles className="w-3.5 h-3.5 text-purple-400" />
-                          Fechados: <strong className="text-purple-300">{m.closedDeals}</strong>
+                          <Sparkles className="w-3.5 h-3.5 text-purple-600" />
+                          Fechados: <strong className="text-purple-800">{m.closedDeals}</strong>
                         </span>
                       </div>
                     </div>
@@ -283,8 +283,8 @@ export const UserManagementView: React.FC<UserManagementViewProps> = ({ currentU
                         title={u.active === false ? 'Reativar Consultor' : 'Desativar Consultor'}
                         className={`px-2.5 py-1.5 rounded-xl text-xs font-bold border transition cursor-pointer ${
                           u.active === false
-                            ? 'bg-emerald-950/40 border-emerald-800 text-emerald-300 hover:bg-emerald-900/50'
-                            : 'bg-[#181822] border-[#282832] text-slate-400 hover:text-slate-200'
+                            ? 'bg-emerald-50 border-emerald-300 text-emerald-800 hover:bg-emerald-100'
+                            : 'bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200'
                         }`}
                       >
                         {u.active === false ? 'Ativar' : 'Ativo'}
@@ -294,7 +294,7 @@ export const UserManagementView: React.FC<UserManagementViewProps> = ({ currentU
                         type="button"
                         onClick={() => handleOpenEdit(u)}
                         title="Editar Nome e Senha"
-                        className="p-2 rounded-xl bg-[#181822] border border-[#282832] text-slate-400 hover:text-[#ff7a00] transition cursor-pointer"
+                        className="p-2 rounded-xl bg-slate-100 border border-slate-200 text-slate-600 hover:text-[#ff7a00] hover:bg-orange-50 transition cursor-pointer"
                       >
                         <Edit3 className="w-4 h-4" />
                       </button>
@@ -304,7 +304,7 @@ export const UserManagementView: React.FC<UserManagementViewProps> = ({ currentU
                           type="button"
                           onClick={() => handleDeleteUser(u)}
                           title="Excluir Consultor"
-                          className="p-2 rounded-xl bg-[#181822] border border-[#282832] text-slate-500 hover:text-rose-400 hover:bg-rose-950/40 transition cursor-pointer"
+                          className="p-2 rounded-xl bg-slate-100 border border-slate-200 text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition cursor-pointer"
                         >
                           <Trash2 className="w-4 h-4" />
                         </button>
@@ -320,14 +320,14 @@ export const UserManagementView: React.FC<UserManagementViewProps> = ({ currentU
 
       {/* Modal de Edição */}
       {editingUser && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn">
-          <div className="bg-[#121216] rounded-3xl border border-[#282832] shadow-2xl max-w-md w-full p-6 space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-[#282832]">
-              <h3 className="font-extrabold text-white text-base">Editar Consultor</h3>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm animate-fadeIn">
+          <div className="bg-white rounded-3xl border border-slate-200 shadow-2xl max-w-md w-full p-6 space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200">
+              <h3 className="font-extrabold text-slate-900 text-base">Editar Consultor</h3>
               <button
                 type="button"
                 onClick={() => setEditingUser(null)}
-                className="p-1 rounded-lg text-slate-400 hover:text-white"
+                className="p-1 rounded-lg text-slate-400 hover:text-slate-700"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -335,29 +335,29 @@ export const UserManagementView: React.FC<UserManagementViewProps> = ({ currentU
 
             <form onSubmit={handleSaveEdit} className="space-y-4">
               <div>
-                <label className="block text-xs font-bold text-slate-400 mb-1">Nome Completo</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Nome Completo</label>
                 <input
                   type="text"
                   required
                   value={editName}
                   onChange={(e) => setEditName(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#282832] bg-[#18181f] text-xs text-white"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-xs text-slate-900 focus:outline-none focus:border-[#ff7a00]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-400 mb-1">Login</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Login</label>
                 <input
                   type="text"
                   required
                   value={editUsername}
                   onChange={(e) => setEditUsername(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#282832] bg-[#18181f] text-xs text-white"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-xs text-slate-900 focus:outline-none focus:border-[#ff7a00]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-400 mb-1">
+                <label className="block text-xs font-bold text-slate-700 mb-1">
                   Nova Senha (deixe em branco para não alterar)
                 </label>
                 <input
@@ -365,7 +365,7 @@ export const UserManagementView: React.FC<UserManagementViewProps> = ({ currentU
                   value={editPassword}
                   onChange={(e) => setEditPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#282832] bg-[#18181f] text-xs text-white"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-xs text-slate-900 focus:outline-none focus:border-[#ff7a00]"
                 />
               </div>
 
@@ -373,13 +373,13 @@ export const UserManagementView: React.FC<UserManagementViewProps> = ({ currentU
                 <button
                   type="button"
                   onClick={() => setEditingUser(null)}
-                  className="px-4 py-2 text-xs font-bold text-slate-400 hover:text-white"
+                  className="px-4 py-2 text-xs font-bold text-slate-600 hover:bg-slate-100 rounded-xl"
                 >
                   Cancelar
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2.5 rounded-xl bg-[#ff7a00] hover:bg-[#e06b00] text-slate-950 font-bold text-xs shadow-md shadow-[#ff7a00]/25"
+                  className="px-5 py-2.5 rounded-xl bg-[#ff7a00] hover:bg-[#e06b00] text-slate-950 font-bold text-xs shadow-sm"
                 >
                   Salvar Alterações
                 </button>

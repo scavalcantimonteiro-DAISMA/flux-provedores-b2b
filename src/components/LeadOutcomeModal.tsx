@@ -37,63 +37,63 @@ const OUTCOMES: {
     title: 'Contato Realizado',
     subtitle: 'Conversou com o decisor de compras ou proprietário',
     icon: PhoneCall,
-    color: 'text-[#ff7a00]',
-    border: 'border-[#ff7a00]/30',
-    activeBg: 'bg-[#ff7a00]/15 border-[#ff7a00] ring-1 ring-[#ff7a00]'
+    color: 'text-[#e06b00]',
+    border: 'border-orange-300',
+    activeBg: 'bg-orange-50 border-2 border-[#ff7a00] text-slate-950 ring-1 ring-[#ff7a00]/30'
   },
   {
     status: 'COTACAO_ENVIADA',
     title: 'Cotação Enviada',
     subtitle: 'Enviou proposta formal de cabos, ONUs ou caixas CTO',
     icon: FileSpreadsheet,
-    color: 'text-blue-400',
-    border: 'border-blue-500/30',
-    activeBg: 'bg-blue-950/40 border-blue-500 ring-1 ring-blue-500'
+    color: 'text-blue-600',
+    border: 'border-blue-300',
+    activeBg: 'bg-blue-50 border-2 border-blue-500 text-slate-950 ring-1 ring-blue-500/30'
   },
   {
     status: 'AMOSTRA_AGENDADA',
     title: 'Amostra Técnica Enviada',
     subtitle: 'Envio de amostras de cabos ou ONUs para homologação',
     icon: Package,
-    color: 'text-amber-400',
-    border: 'border-amber-500/30',
-    activeBg: 'bg-amber-950/40 border-amber-500 ring-1 ring-amber-500'
+    color: 'text-amber-600',
+    border: 'border-amber-300',
+    activeBg: 'bg-amber-50 border-2 border-amber-500 text-slate-950 ring-1 ring-amber-500/30'
   },
   {
     status: 'VISITA_AGENDADA',
     title: 'Visita Comercial Agendada',
     subtitle: 'Data marcada no provedor para apresentação e negociação',
     icon: CalendarCheck,
-    color: 'text-emerald-400',
-    border: 'border-emerald-500/30',
-    activeBg: 'bg-emerald-950/40 border-emerald-500 ring-1 ring-emerald-500'
+    color: 'text-emerald-600',
+    border: 'border-emerald-300',
+    activeBg: 'bg-emerald-50 border-2 border-emerald-500 text-slate-950 ring-1 ring-emerald-500/30'
   },
   {
     status: 'OUTRO_DISTRIBUIDOR',
     title: 'Já compra de Outro Distribuidor',
     subtitle: 'Utiliza WDC, Dicomp, Furukawa, Fiberhome ou outro',
     icon: Building2,
-    color: 'text-orange-400',
-    border: 'border-orange-500/30',
-    activeBg: 'bg-orange-950/40 border-orange-500 ring-1 ring-orange-500'
+    color: 'text-orange-600',
+    border: 'border-orange-300',
+    activeBg: 'bg-orange-50 border-2 border-orange-500 text-slate-950 ring-1 ring-orange-500/30'
   },
   {
     status: 'FECHADO',
     title: 'Fechou Pedido / Cliente Ativo! 🏆',
     subtitle: 'Pedido faturado e entrega de materiais confirmada',
     icon: Sparkles,
-    color: 'text-purple-400',
-    border: 'border-purple-500/30',
-    activeBg: 'bg-purple-950/40 border-purple-500 ring-1 ring-purple-500'
+    color: 'text-purple-600',
+    border: 'border-purple-300',
+    activeBg: 'bg-purple-50 border-2 border-purple-500 text-slate-950 ring-1 ring-purple-500/30'
   },
   {
     status: 'SEM_INTERESSE',
     title: 'Sem Demanda / Sem Interesse',
     subtitle: 'Provedor sem expansão no momento ou já estocado',
     icon: XCircle,
-    color: 'text-rose-400',
-    border: 'border-rose-500/30',
-    activeBg: 'bg-rose-950/40 border-rose-500 ring-1 ring-rose-500'
+    color: 'text-rose-600',
+    border: 'border-rose-300',
+    activeBg: 'bg-rose-50 border-2 border-rose-500 text-slate-950 ring-1 ring-rose-500/30'
   }
 ];
 
@@ -179,24 +179,24 @@ export const LeadOutcomeModal: React.FC<LeadOutcomeModalProps> = ({ lead, onClos
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-fadeIn overflow-y-auto">
-      <div className="bg-[#121216] rounded-3xl border border-[#282832] shadow-2xl max-w-2xl w-full my-6 overflow-hidden flex flex-col max-h-[92vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/60 backdrop-blur-sm animate-fadeIn overflow-y-auto font-sans">
+      <div className="bg-white rounded-3xl border border-slate-200 shadow-2xl max-w-2xl w-full my-6 overflow-hidden flex flex-col max-h-[92vh]">
         {/* Header */}
-        <div className="p-5 bg-gradient-to-r from-[#171720] via-[#1a1a24] to-[#ff7a00]/25 text-white flex items-start justify-between shrink-0 border-b border-[#282832]">
+        <div className="p-5 bg-gradient-to-r from-slate-900 via-slate-800 to-orange-950 text-white flex items-start justify-between shrink-0 border-b border-orange-500/20">
           <div>
             <div className="flex items-center gap-2">
               <span className="px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-[#ff7a00] text-slate-950">
                 Retorno Comercial ISP
               </span>
-              <span className="text-xs text-slate-400 font-mono">
+              <span className="text-xs text-slate-300 font-mono">
                 {lead.porte} • {lead.city}/{lead.state}
               </span>
             </div>
             <h3 className="font-extrabold text-xl text-white mt-1 leading-tight">
               {lead.tradeName}
             </h3>
-            <p className="text-xs text-slate-400 mt-0.5">
-              Decisor: <strong className="text-white">{lead.contactPerson}</strong> • {lead.estimatedSubscribers}
+            <p className="text-xs text-slate-300 mt-0.5">
+              Decisor: <strong className="text-orange-300">{lead.contactPerson}</strong> • {lead.estimatedSubscribers}
             </p>
           </div>
           <button
@@ -212,7 +212,7 @@ export const LeadOutcomeModal: React.FC<LeadOutcomeModalProps> = ({ lead, onClos
         <form onSubmit={handleSubmit} className="p-5 space-y-5 overflow-y-auto flex-1">
           {/* Outcome Cards */}
           <div>
-            <label className="block text-xs font-black uppercase tracking-wider text-slate-400 mb-2">
+            <label className="block text-xs font-black uppercase tracking-wider text-slate-700 mb-2">
               Qual foi o resultado do contato com o provedor?
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -227,22 +227,22 @@ export const LeadOutcomeModal: React.FC<LeadOutcomeModalProps> = ({ lead, onClos
                     className={`text-left p-3 rounded-2xl border transition cursor-pointer flex items-start gap-3 ${
                       isSelected
                         ? item.activeBg
-                        : 'border-[#282832] bg-[#18181f] hover:border-slate-600'
+                        : 'border-slate-200 bg-slate-50 hover:bg-slate-100 hover:border-slate-300'
                     }`}
                   >
-                    <div className={`p-2 rounded-xl bg-[#0e0e12] shrink-0 ${item.color}`}>
+                    <div className={`p-2 rounded-xl bg-white shadow-xs shrink-0 ${item.color}`}>
                       <Icon className="w-4 h-4" />
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center justify-between">
-                        <span className="font-bold text-xs text-white block truncate">
+                        <span className="font-bold text-xs text-slate-900 block truncate">
                           {item.title}
                         </span>
                         {isSelected && (
                           <span className="w-2 h-2 rounded-full bg-[#ff7a00] shrink-0 ml-1"></span>
                         )}
                       </div>
-                      <p className="text-[11px] text-slate-400 line-clamp-1 mt-0.5">
+                      <p className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
                         {item.subtitle}
                       </p>
                     </div>
@@ -256,13 +256,13 @@ export const LeadOutcomeModal: React.FC<LeadOutcomeModalProps> = ({ lead, onClos
 
           {/* COTAÇÃO ENVIADA */}
           {selectedStatus === 'COTACAO_ENVIADA' && (
-            <div className="p-4 rounded-2xl bg-blue-950/30 border border-blue-800 space-y-3 animate-fadeIn">
-              <div className="flex items-center gap-2 text-blue-300 font-bold text-xs">
-                <FileSpreadsheet className="w-4 h-4 text-blue-400" />
+            <div className="p-4 rounded-2xl bg-blue-50 border border-blue-200 space-y-3 animate-fadeIn">
+              <div className="flex items-center gap-2 text-blue-900 font-bold text-xs">
+                <FileSpreadsheet className="w-4 h-4 text-blue-600" />
                 <span>Dados da Cotação / Orçamento</span>
               </div>
               <div>
-                <label className="block text-[11px] font-bold text-slate-300 mb-1">
+                <label className="block text-[11px] font-bold text-slate-700 mb-1">
                   Valor Estimado da Cotação (R$) ou Volume de Itens
                 </label>
                 <input
@@ -270,7 +270,7 @@ export const LeadOutcomeModal: React.FC<LeadOutcomeModalProps> = ({ lead, onClos
                   value={quoteValue}
                   onChange={(e) => setQuoteValue(e.target.value)}
                   placeholder="Ex: R$ 18.500,00 (10 bobinas drop + 100 ONUs)"
-                  className="w-full px-3 py-2 rounded-xl border border-blue-700 bg-[#0e0e12] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-400"
+                  className="w-full px-3 py-2 rounded-xl border border-blue-300 bg-white text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
             </div>
@@ -278,14 +278,14 @@ export const LeadOutcomeModal: React.FC<LeadOutcomeModalProps> = ({ lead, onClos
 
           {/* VISITA AGENDADA */}
           {selectedStatus === 'VISITA_AGENDADA' && (
-            <div className="p-4 rounded-2xl bg-emerald-950/30 border border-emerald-800 space-y-3 animate-fadeIn">
-              <div className="flex items-center gap-2 text-emerald-300 font-bold text-xs">
-                <CalendarCheck className="w-4 h-4 text-emerald-400" />
+            <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-3 animate-fadeIn">
+              <div className="flex items-center gap-2 text-emerald-900 font-bold text-xs">
+                <CalendarCheck className="w-4 h-4 text-emerald-600" />
                 <span>Agendamento Presencial no Provedor</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-300 mb-1">
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
                     Data e Hora da Reunião *
                   </label>
                   <input
@@ -293,11 +293,11 @@ export const LeadOutcomeModal: React.FC<LeadOutcomeModalProps> = ({ lead, onClos
                     value={visitDate}
                     onChange={(e) => setVisitDate(e.target.value)}
                     required
-                    className="w-full px-3 py-2 rounded-xl border border-emerald-700 bg-[#0e0e12] text-xs font-semibold text-white focus:outline-none focus:border-emerald-400"
+                    className="w-full px-3 py-2 rounded-xl border border-emerald-300 bg-white text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-300 mb-1">
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
                     Quem vai nos receber
                   </label>
                   <input
@@ -305,12 +305,12 @@ export const LeadOutcomeModal: React.FC<LeadOutcomeModalProps> = ({ lead, onClos
                     value={contactPerson}
                     onChange={(e) => setContactPerson(e.target.value)}
                     placeholder="Ex: Carlos (Dono) e Amanda (NOC)"
-                    className="w-full px-3 py-2 rounded-xl border border-emerald-700 bg-[#0e0e12] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-400"
+                    className="w-full px-3 py-2 rounded-xl border border-emerald-300 bg-white text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-[11px] font-bold text-slate-300 mb-1">
+                <label className="block text-[11px] font-bold text-slate-700 mb-1">
                   Observações para a visita técnica/comercial
                 </label>
                 <input
@@ -318,7 +318,7 @@ export const LeadOutcomeModal: React.FC<LeadOutcomeModalProps> = ({ lead, onClos
                   value={visitNotes}
                   onChange={(e) => setVisitNotes(e.target.value)}
                   placeholder="Ex: Levar amostra do cabo Drop autossustentado e tabela atacado"
-                  className="w-full px-3 py-2 rounded-xl border border-emerald-700 bg-[#0e0e12] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-400"
+                  className="w-full px-3 py-2 rounded-xl border border-emerald-300 bg-white text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500"
                 />
               </div>
             </div>
@@ -326,9 +326,9 @@ export const LeadOutcomeModal: React.FC<LeadOutcomeModalProps> = ({ lead, onClos
 
           {/* JÁ COMPRA DE OUTRO DISTRIBUIDOR */}
           {selectedStatus === 'OUTRO_DISTRIBUIDOR' && (
-            <div className="p-4 rounded-2xl bg-orange-950/30 border border-orange-800 space-y-3 animate-fadeIn">
-              <div className="flex items-center gap-2 text-orange-300 font-bold text-xs">
-                <Building2 className="w-4 h-4 text-orange-400" />
+            <div className="p-4 rounded-2xl bg-orange-50 border border-orange-200 space-y-3 animate-fadeIn">
+              <div className="flex items-center gap-2 text-orange-950 font-bold text-xs">
+                <Building2 className="w-4 h-4 text-[#e06b00]" />
                 <span>De qual distribuidor o provedor compra habitualmente?</span>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -339,8 +339,8 @@ export const LeadOutcomeModal: React.FC<LeadOutcomeModalProps> = ({ lead, onClos
                     onClick={() => setCompetitorDistributor(dist)}
                     className={`py-2 px-3 rounded-xl text-xs font-bold border text-center transition cursor-pointer ${
                       competitorDistributor === dist
-                        ? 'bg-[#ff7a00] text-slate-950 border-[#ff7a00]'
-                        : 'bg-[#18181f] text-slate-300 border-[#282832] hover:border-slate-600'
+                        ? 'bg-[#ff7a00] text-slate-950 border-[#ff7a00] shadow-xs'
+                        : 'bg-white text-slate-700 border-slate-300 hover:bg-orange-50'
                     }`}
                   >
                     {dist}
@@ -349,7 +349,7 @@ export const LeadOutcomeModal: React.FC<LeadOutcomeModalProps> = ({ lead, onClos
               </div>
               {competitorDistributor === 'Outro' && (
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-300 mb-1">
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
                     Nome do Distribuidor ou Importadora
                   </label>
                   <input
@@ -357,7 +357,7 @@ export const LeadOutcomeModal: React.FC<LeadOutcomeModalProps> = ({ lead, onClos
                     value={customDistributor}
                     onChange={(e) => setCustomDistributor(e.target.value)}
                     placeholder="Ex: Fiberhome, OIW, Distribuidora Regional..."
-                    className="w-full px-3 py-2 rounded-xl border border-orange-700 bg-[#0e0e12] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#ff7a00]"
+                    className="w-full px-3 py-2 rounded-xl border border-orange-300 bg-white text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#ff7a00]"
                   />
                 </div>
               )}
@@ -366,14 +366,14 @@ export const LeadOutcomeModal: React.FC<LeadOutcomeModalProps> = ({ lead, onClos
 
           {/* FECHADO / PEDIDO ACEITO */}
           {selectedStatus === 'FECHADO' && (
-            <div className="p-4 rounded-2xl bg-purple-950/30 border border-purple-800 space-y-3 animate-fadeIn">
-              <div className="flex items-center gap-2 text-purple-300 font-black text-xs">
-                <Sparkles className="w-4 h-4 text-purple-400" />
+            <div className="p-4 rounded-2xl bg-purple-50 border border-purple-200 space-y-3 animate-fadeIn">
+              <div className="flex items-center gap-2 text-purple-900 font-black text-xs">
+                <Sparkles className="w-4 h-4 text-purple-600" />
                 <span>Parabéns! Registrar Pedido Fechado SCM TECH</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-300 mb-1">
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
                     Itens / Materiais Fechados
                   </label>
                   <input
@@ -381,11 +381,11 @@ export const LeadOutcomeModal: React.FC<LeadOutcomeModalProps> = ({ lead, onClos
                     value={orderMaterials}
                     onChange={(e) => setOrderMaterials(e.target.value)}
                     placeholder="Ex: 20 Bobinas Drop 1km + 150 ONUs"
-                    className="w-full px-3 py-2 rounded-xl border border-purple-700 bg-[#0e0e12] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-purple-400 font-semibold"
+                    className="w-full px-3 py-2 rounded-xl border border-purple-300 bg-white text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500 font-semibold"
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-300 mb-1">
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">
                     Valor do Pedido (R$)
                   </label>
                   <input
@@ -393,7 +393,7 @@ export const LeadOutcomeModal: React.FC<LeadOutcomeModalProps> = ({ lead, onClos
                     value={orderValue}
                     onChange={(e) => setOrderValue(e.target.value)}
                     placeholder="Ex: R$ 34.000,00"
-                    className="w-full px-3 py-2 rounded-xl border border-purple-700 bg-[#0e0e12] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-purple-400 font-semibold"
+                    className="w-full px-3 py-2 rounded-xl border border-purple-300 bg-white text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500 font-semibold"
                   />
                 </div>
               </div>
@@ -402,7 +402,7 @@ export const LeadOutcomeModal: React.FC<LeadOutcomeModalProps> = ({ lead, onClos
 
           {/* Resumo Geral */}
           <div>
-            <label className="block text-xs font-bold text-slate-300 mb-1.5">
+            <label className="block text-xs font-bold text-slate-700 mb-1.5">
               Anotação / Resumo da conversa com o provedor
             </label>
             <textarea
@@ -410,7 +410,7 @@ export const LeadOutcomeModal: React.FC<LeadOutcomeModalProps> = ({ lead, onClos
               value={notesText}
               onChange={(e) => setNotesText(e.target.value)}
               placeholder="Ex: Falei com o Carlos. Disse que precisa de 10 bobinas de drop para o próximo mês e pediu para cotar também conectores SC/APC..."
-              className="w-full px-3.5 py-2.5 rounded-xl border border-[#282832] bg-[#18181f] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#ff7a00] resize-none"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-slate-50 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:bg-white focus:border-[#ff7a00] focus:ring-2 focus:ring-[#ff7a00]/20 resize-none"
             />
           </div>
 
@@ -420,14 +420,14 @@ export const LeadOutcomeModal: React.FC<LeadOutcomeModalProps> = ({ lead, onClos
               type="button"
               onClick={onClose}
               disabled={saving}
-              className="px-4 py-2.5 rounded-xl text-xs font-bold text-slate-400 hover:text-white transition cursor-pointer"
+              className="px-4 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100 transition cursor-pointer"
             >
               Cancelar
             </button>
             <button
               type="submit"
               disabled={saving}
-              className="px-5 py-2.5 rounded-xl text-xs font-black bg-[#ff7a00] hover:bg-[#e06b00] text-slate-950 transition flex items-center gap-2 shadow-lg shadow-[#ff7a00]/25 cursor-pointer disabled:opacity-50"
+              className="px-5 py-2.5 rounded-xl text-xs font-black bg-[#ff7a00] hover:bg-[#e06b00] text-slate-950 transition flex items-center gap-2 shadow-sm cursor-pointer disabled:opacity-50"
             >
               {saving ? (
                 <>
