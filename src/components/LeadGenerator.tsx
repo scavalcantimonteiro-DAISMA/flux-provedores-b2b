@@ -142,7 +142,7 @@ export const LeadGenerator: React.FC<LeadGeneratorProps> = ({ currentUser, onLea
   const openWhatsApp = (lead: Lead) => {
     const cleanPhone = lead.whatsapp.replace(/\D/g, '');
     const message = encodeURIComponent(
-      `Olá, tudo bem? Sou da equipe comercial da FLUX Distribuidora de Fibra Óptica & Telecom.\n\n` +
+      `Olá, tudo bem? Sou da equipe comercial da SCM TECH Telecomunicações & Fibra Óptica.\n\n` +
       `Entro em contato com o provedor ${lead.tradeName} (${lead.city}/${lead.state}) a respeito do nosso estoque a pronta entrega com condições direto da fábrica:\n\n` +
       `• Cabos Drop Óptico 1 FO Homologados Anatel\n` +
       `• Caixas CTOs e Passivos para expansão FTTH\n` +

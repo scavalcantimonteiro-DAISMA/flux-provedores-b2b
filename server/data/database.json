@@ -1,8 +1,17 @@
 {
   "users": [
     {
+      "id": "usr_admin_default",
+      "name": "Saulo (Administrador SCM TECH)",
+      "username": "Adm",
+      "password": "$2b$10$EMm7FO400fRay/0UCO.iCOwRIwcTtoWBIzRe8JpAuvh7OT6EtpE7G",
+      "role": "admin",
+      "active": true,
+      "createdAt": "2026-11-13T12:00:00.000Z"
+    },
+    {
       "id": "usr_flux_admin",
-      "name": "Saulo (Administrador FLUX)",
+      "name": "Saulo (Administrador SCM TECH)",
       "username": "Flux",
       "password": "$2b$10$EMm7FO400fRay/0UCO.iCOwRIwcTtoWBIzRe8JpAuvh7OT6EtpE7G",
       "role": "admin",

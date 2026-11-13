@@ -72,7 +72,7 @@ export function App() {
       <div className="min-h-screen bg-[#0a0a0c] flex items-center justify-center text-white font-sans">
         <div className="text-center">
           <div className="inline-block w-10 h-10 border-3 border-[#ff7a00] border-t-transparent rounded-full animate-spin mb-3"></div>
-          <p className="text-sm font-semibold text-slate-400">Iniciando FLUX Provedores B2B...</p>
+          <p className="text-sm font-semibold text-slate-400">Iniciando SCM TECH Provedores B2B...</p>
         </div>
       </div>
     );
@@ -140,7 +140,7 @@ export function App() {
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <img src="/assets/logo-scm.jpg" alt="SCM TECH" className="w-5 h-5 rounded object-cover border border-[#ff7a00]/30" />
-            <span className="font-bold text-white">FLUX Provedores B2B</span>
+            <span className="font-bold text-white">SCM TECH Provedores B2B</span>
           </div>
           <p className="text-slate-400 text-center">
             Desenvolvido e criado pela <strong className="text-[#ff7a00] font-bold">SCM TECH</strong> • Todos os direitos reservados

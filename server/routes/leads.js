@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
     // Vendedor comum vê ESTRITAMENTE a sua carteira
     leads = leads.filter(l => l.userId === req.user.id);
   } else {
-    // Administrador FLUX:
+    // Administrador SCM TECH:
     if (targetUserId && targetUserId !== 'all') {
       leads = leads.filter(l => l.userId === targetUserId);
     } else if (!targetUserId) {

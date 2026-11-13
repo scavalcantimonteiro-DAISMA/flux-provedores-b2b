@@ -175,7 +175,7 @@ export const UserManagementView: React.FC<UserManagementViewProps> = ({ currentU
                 required
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                placeholder="Ex: matheus.flux"
+                placeholder="Ex: matheus.scm"
                 className="w-full px-3.5 py-2.5 rounded-xl border border-[#282832] bg-[#18181f] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#ff7a00]"
               />
             </div>

@@ -47,10 +47,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="leading-tight">
               <div className="flex items-center gap-2">
                 <span className="font-black text-white text-base tracking-tight">
-                  FLUX <span className="text-[#ff7a00]">Provedores</span>
+                  SCM TECH <span className="text-[#ff7a00]">Provedores</span>
                 </span>
                 <span className="hidden sm:inline-block px-1.5 py-0.5 rounded text-[10px] font-black uppercase tracking-wider bg-[#ff7a00]/15 text-[#ff7a00] border border-[#ff7a00]/30">
-                  SCM TECH
+                  TELECOM B2B
                 </span>
               </div>
               <p className="text-[11px] text-slate-400 hidden sm:block">

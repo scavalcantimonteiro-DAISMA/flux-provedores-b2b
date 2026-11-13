@@ -42,7 +42,7 @@ const STATUS_BADGES: Record<LeadStatus, { label: string; bg: string; text: strin
   AMOSTRA_AGENDADA: { label: '📦 Amostra Técnica', bg: 'bg-amber-950/50', text: 'text-amber-300', border: 'border-amber-700' },
   VISITA_AGENDADA: { label: '🟢 Visita Agendada', bg: 'bg-emerald-950/50', text: 'text-emerald-300', border: 'border-emerald-700' },
   OUTRO_DISTRIBUIDOR: { label: '🏢 Outro Distribuidor', bg: 'bg-orange-950/50', text: 'text-orange-300', border: 'border-orange-700' },
-  FECHADO: { label: '🏆 Cliente Ativo FLUX', bg: 'bg-purple-950/50', text: 'text-purple-300', border: 'border-purple-700' },
+  FECHADO: { label: '🏆 Cliente Ativo (Fechado)', bg: 'bg-purple-950/50', text: 'text-purple-300', border: 'border-purple-700' },
   SEM_INTERESSE: { label: '🔴 Sem Interesse', bg: 'bg-rose-950/50', text: 'text-rose-300', border: 'border-rose-700' }
 };
 
@@ -147,7 +147,7 @@ export const PortfolioView: React.FC<PortfolioViewProps> = ({
   const openWhatsApp = (lead: Lead) => {
     const cleanPhone = lead.whatsapp.replace(/\D/g, '');
     const message = encodeURIComponent(
-      `Olá, tudo bem? Sou ${currentUser.name} da equipe comercial da FLUX Distribuidora de Fibra Óptica & Telecom.\n\n` +
+      `Olá, tudo bem? Sou ${currentUser.name} da equipe comercial da SCM TECH Telecomunicações & Fibra Óptica.\n\n` +
       `Entro em contato com o provedor ${lead.tradeName} a respeito da nossa linha completa de Cabos Drop, ONUs GPON e Caixas CTO homologadas.\n\n` +
       `Gostaria de falar com o responsável de compras (${lead.contactPerson}) para enviar nossa tabela de preços e verificar condições de fornecimento.`
     );
@@ -189,8 +189,8 @@ export const PortfolioView: React.FC<PortfolioViewProps> = ({
 
     const worksheet = XLSX.utils.json_to_sheet(rows);
     const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, 'Provedores FLUX B2B');
-    XLSX.writeFile(workbook, `Carteira_Provedores_FLUX_${new Date().toISOString().slice(0, 10)}.xlsx`);
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Provedores SCM TECH B2B');
+    XLSX.writeFile(workbook, `Carteira_Provedores_SCM_TECH_${new Date().toISOString().slice(0, 10)}.xlsx`);
   };
 
   return (
@@ -237,7 +237,7 @@ export const PortfolioView: React.FC<PortfolioViewProps> = ({
             <div className="flex items-center gap-2">
               <Users className="w-4 h-4 text-[#ff7a00]" />
               <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">
-                Auditoria do Administrador FLUX:
+                Auditoria do Administrador SCM TECH:
               </span>
             </div>
             <div className="flex items-center gap-2">
@@ -300,7 +300,7 @@ export const PortfolioView: React.FC<PortfolioViewProps> = ({
               <option value="AMOSTRA_AGENDADA">📦 Amostra Técnica</option>
               <option value="VISITA_AGENDADA">🟢 Visita Agendada</option>
               <option value="OUTRO_DISTRIBUIDOR">🏢 Outro Distribuidor</option>
-              <option value="FECHADO">🏆 Cliente Ativo FLUX</option>
+              <option value="FECHADO">🏆 Cliente Ativo (Fechado)</option>
               <option value="SEM_INTERESSE">🔴 Sem Interesse</option>
             </select>
 

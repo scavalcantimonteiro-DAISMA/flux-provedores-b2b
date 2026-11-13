@@ -23,8 +23,17 @@ export async function initDb() {
   const defaultDb = {
     users: [
       {
+        id: 'usr_admin_default',
+        name: 'Saulo (Administrador SCM TECH)',
+        username: 'Adm',
+        password: defaultAdminPassword,
+        role: 'admin',
+        active: true,
+        createdAt: new Date().toISOString()
+      },
+      {
         id: 'usr_flux_admin',
-        name: 'Saulo (Administrador FLUX)',
+        name: 'Saulo (Administrador SCM TECH)',
         username: 'Flux',
         password: defaultAdminPassword,
         role: 'admin',

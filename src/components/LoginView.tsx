@@ -8,7 +8,7 @@ interface LoginViewProps {
 }
 
 export const LoginView: React.FC<LoginViewProps> = ({ onLoginSuccess }) => {
-  const [username, setUsername] = useState('Flux');
+  const [username, setUsername] = useState('Adm');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -53,7 +53,7 @@ export const LoginView: React.FC<LoginViewProps> = ({ onLoginSuccess }) => {
           </div>
 
           <h1 className="text-2xl font-black text-white tracking-tight">
-            FLUX Provedores B2B
+            SCM TECH Provedores B2B
           </h1>
           <p className="text-slate-400 text-xs mt-1">
             Prospecção & Captação Ativa de Provedores de Internet (ISPs)
@@ -127,7 +127,7 @@ export const LoginView: React.FC<LoginViewProps> = ({ onLoginSuccess }) => {
         <div className="mt-6 pt-5 border-t border-[#282832] text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#18181f] border border-[#282832] text-[11px] text-slate-400 font-mono">
             <ShieldCheck className="w-3.5 h-3.5 text-[#ff7a00]" />
-            <span>Admin: <strong className="text-white">Flux</strong> | Senha: <strong className="text-white">Flux@2026</strong></span>
+            <span>Admin: <strong className="text-white">Adm</strong> (ou <strong className="text-white">Flux</strong>) | Senha: <strong className="text-white">Flux@2026</strong></span>
           </div>
         </div>
       </div>

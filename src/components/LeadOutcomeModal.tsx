@@ -369,7 +369,7 @@ export const LeadOutcomeModal: React.FC<LeadOutcomeModalProps> = ({ lead, onClos
             <div className="p-4 rounded-2xl bg-purple-950/30 border border-purple-800 space-y-3 animate-fadeIn">
               <div className="flex items-center gap-2 text-purple-300 font-black text-xs">
                 <Sparkles className="w-4 h-4 text-purple-400" />
-                <span>Parabéns! Registrar Pedido Fechado FLUX</span>
+                <span>Parabéns! Registrar Pedido Fechado SCM TECH</span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>

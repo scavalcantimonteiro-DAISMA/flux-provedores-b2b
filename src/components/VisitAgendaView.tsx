@@ -90,7 +90,7 @@ export const VisitAgendaView: React.FC<VisitAgendaViewProps> = ({
   const openWhatsApp = (lead: Lead) => {
     const cleanPhone = lead.whatsapp.replace(/\D/g, '');
     const message = encodeURIComponent(
-      `Olá ${lead.contactPerson}, tudo bem? Aqui é ${currentUser.name} da FLUX Distribuidora.\n\n` +
+      `Olá ${lead.contactPerson}, tudo bem? Aqui é ${currentUser.name} da SCM TECH Telecom.\n\n` +
       `Estou entrando em contato para confirmar nosso agendamento a respeito da apresentação de materiais de fibra óptica para o ${lead.tradeName}.`
     );
     window.open(`https://wa.me/55${cleanPhone}?text=${message}`, '_blank');

@@ -6,8 +6,8 @@ const PORT = process.env.PORT || 3002;
 async function start() {
   await initDb();
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`🚀 FLUX Provedores B2B Backend rodando em http://localhost:${PORT}`);
-    console.log(`👤 Administrador Padrão: Flux | Senha: [configurada]`);
+    console.log(`🚀 SCM TECH Provedores B2B Backend rodando em http://localhost:${PORT}`);
+    console.log(`👤 Administrador Padrão: Adm / Flux | Senha: [configurada]`);
   });
 }
 

@@ -30,7 +30,7 @@ app.use(['/api/search', '/search'], searchRoutes);
 app.get(['/api/health', '/health'], (req, res) => {
   res.json({
     status: 'online',
-    system: 'FLUX Provedores B2B — SCM TECH',
+    system: 'SCM TECH Provedores B2B',
     version: '1.0.0',
     timestamp: new Date().toISOString()
   });
@@ -47,7 +47,7 @@ app.use((req, res, next) => {
   }
   res.sendFile(path.join(distPath, 'index.html'), (err) => {
     if (err) {
-      res.status(200).send('FLUX Provedores B2B API Online. Aguardando build do frontend.');
+      res.status(200).send('SCM TECH Provedores B2B API Online. Aguardando build do frontend.');
     }
   });
 });
